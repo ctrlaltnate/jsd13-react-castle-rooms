@@ -17,7 +17,7 @@ export default function SecretRoom({ textFromInput, onSecretRoomChange }) {
       <div className="w-full h-full flex flex-col items-center justify-center">
         <h2 className="text-white text-sm font-bold mb-4">Secret Room </h2>
         <p className="text-yellow-300 font-bold my-4 text-2xl ">
-          Outside said: {textFromInput ? textFromInput : "Waiting for a message from Outside..."}
+          Outside said: {textFromInput ? textFromInput : " ⏳ Waiting for a message from Outside..."}
         </p>
         <InputBox
           value={inputTextFromSecretRoom}

@@ -15,7 +15,7 @@ export default function Outside() {
         
         <h2 className="text-white text-3xl font-bold mb-8">Outside</h2>
         <p className="text-yellow-500 font-bold my-4 text-2xl ">
-          Secret Room said: {secretText ? secretText : "Wating for a message from the Secret Room..."}
+          Secret Room said: {secretText ? secretText : "⏳ Wating for a message from the Secret Room..."}
         </p>
         <InputBox 
             value={inputText}
