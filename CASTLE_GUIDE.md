@@ -689,17 +689,16 @@ function Outside() {
   );
 }
 
-// Child Component
+// Child Component - วิธี 1: ไม่ destructure
+function Castle(props) {
+  // props = { message: "...", ... }
+  return <div>Outside บอกว่า: {props.message}</div>;
+}
+
+// Child Component - วิธี 2: destructure (สะอาดกว่า! ✅)
 function Castle({ message }) {
-  // message คือ prop - ไม่สามารถแก้ไขได้โดยตรง
-  
-  return (
-    <div>
-      <p>Outside บอกว่า: {message}</p>
-      {/* ❌ สิ่งนี้จะไม่ทำงาน: */}
-      {/* <button onClick={() => message = "new"}> ไม่ได้! */}
-    </div>
-  );
+  // ✅ message ใช้ได้โดยตรง ไม่ต้อง props.message
+  return <div>Outside บอกว่า: {message}</div>;
 }
 ```
 
@@ -837,8 +836,10 @@ Outside
 // 1. import สิ่งที่ต้องใช้
 import { useState } from "react";
 
-// 2. สร้าง function
+// 2. สร้าง function (ตัวเลือก: destructure props ที่นี่)
 export default function MyComponent({ prop1, prop2 }) {
+  // ✅ Destructure ทำให้ prop1, prop2 ใช้ได้โดยตรง
+  
   // 3. ใช้ hooks (useState, etc)
   const [state, setState] = useState(defaultValue);
   
@@ -852,6 +853,16 @@ export default function MyComponent({ prop1, prop2 }) {
   );
 }
 ```
+
+**หรือไม่ destructure:**
+```jsx
+export default function MyComponent(props) {
+  // ไม่ destructure ต้องใช้ props.prop1
+  return <h1>{props.prop1}</h1>;
+}
+```
+
+✨ **ข้อแนะนำ:** ใช้ destructuring ทำให้โค้ดสะอาดกว่า!
 
 ### 🐛 "หน้าไม่แสดงอะไรเลย"
 - ตรวจสอบ browser console (F12 > Console tab)
@@ -943,6 +954,21 @@ function Tower({ textFromInput, onSecretRoomChange }) {
 
 **ใช้ console.log ตรวจสอบ callback:**
 ```jsx
+// วิธี 1: ไม่ destructure
+function SecretRoom(secretRoom) {
+  const handleChange = (e) => {
+    console.log("🤫 SecretRoom พยายามส่ง:", e.target.value);
+    if (secretRoom.onSecretRoomChange) {
+      console.log("✅ Callback มี!");
+      secretRoom.onSecretRoomChange(e.target.value);
+    } else {
+      console.log("❌ Callback ไม่มี!");
+    }
+  };
+  return <input onChange={handleChange} />;
+}
+
+// วิธี 2: Destructure (สะอาดกว่า! ✅)
 function SecretRoom({ onSecretRoomChange }) {
   const handleChange = (e) => {
     console.log("🤫 SecretRoom พยายามส่ง:", e.target.value);
@@ -953,7 +979,6 @@ function SecretRoom({ onSecretRoomChange }) {
       console.log("❌ Callback ไม่มี!");
     }
   };
-  
   return <input onChange={handleChange} />;
 }
 ```
@@ -1005,14 +1030,20 @@ export default function UserProfile() {
 ### 💡 เทคนิค 3: Props Destructuring
 
 ```jsx
-// ❌ ใช้ props ยุ่ง
+// ❌ ไม่ destructure - ยุ่ง
 function MyComponent(props) {
   return <div>{props.name} - {props.age}</div>;
 }
 
-// ✅ Destructure props (สะอาด!)
+// ✅ Destructure props - สะอาด!
 function MyComponent({ name, age }) {
   return <div>{name} - {age}</div>;
+}
+
+// ✅ Destructure ในโปรเจกต์นี้
+function SecretRoom({ textFromInput, onSecretRoomChange }) {
+  // ✅ ใช้ได้ทันที ไม่ต้อง secretRoom.textFromInput
+  return <p>Outside said: {textFromInput}</p>;
 }
 ```
 

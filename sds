@@ -1,0 +1,10 @@
+[33m5b0c994[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Add interactive lesson and styling for React Castle components
+[33m470608d[m Refactor components to use destructured parameters for props in Castle, Tower, Chamber, Room, Hall, Corridor, Gallery, Nook, and SecretRoom
+[33mfa4daae[m Refactor component props to use destructured parameters in Castle, Tower, Chamber, Room, Hall, Corridor, Gallery, Nook, and SecretRoom components
+[33mff074b0[m Add messaging updates to Outside and SecretRoom components
+[33m0d0d4e4[m Add loading indicator to messages in Outside and SecretRoom components
+[33m41c6599[m Update SecretRoom and Outside components for improved messaging and styling
+[33ma805016[m Refactor component structure: rename Outside to 00Outside and create Castle, Tower, Chamber, Room, Hall, Corridor, Gallery, Nook, and SecretRoom components
+[33meaf7a6d[m Add state management for question and answer in Outside component
+[33mea5a04e[m Add main structure components: Castle, Chamber, Corridor, Gallery, Hall, Nook, Room, SecretRoom, Tower, and update App to use Outside
+[33m7f1d36c[m first commit
