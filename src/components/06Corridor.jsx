@@ -1,11 +1,11 @@
 import Gallery from "./07Gallery.jsx";
 
-export default function Corridor({ textFromInput, onSecretRoomChange }) {
+export default function Corridor(corridor) {
   return (
     <div className="w-full h-full bg-indigo-500 flex items-center justify-center p-8">
       <div className="w-full h-full flex flex-col items-center justify-center">
         <h2 className="text-white text-sm font-bold mb-8">Corridor</h2>
-        <Gallery textFromInput={textFromInput} onSecretRoomChange={onSecretRoomChange}/>
+        <Gallery textFromInput={corridor.textFromInput} onSecretRoomChange={corridor.onSecretRoomChange}/>
       </div>
     </div>
   );
