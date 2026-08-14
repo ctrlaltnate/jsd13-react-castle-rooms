@@ -23,6 +23,9 @@ export default function SecretRoom({ textFromInput, onSecretRoomChange }) {
           value={inputTextFromSecretRoom}
           onChange={handleChange}
         />
+                 <p className="text-black font-bold my-4 text-l ">
+          Message for Outside: {inputTextFromSecretRoom ? inputTextFromSecretRoom : "⏳ Waiting for a message from the Secret Room..."}
+        </p>
       </div>
     </div>
   );

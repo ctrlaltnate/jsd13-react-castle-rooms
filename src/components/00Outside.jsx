@@ -21,6 +21,9 @@ export default function Outside() {
             value={inputText}
             onChange={(e)=> setInputText(e.target.value)}
         />
+         <p className="text-black font-bold my-4 text-l ">
+          Message for Secret Room: {inputText ? inputText : "⏳ Waiting for a message to the Secret Room..."}
+        </p>
         <Castle textFromInput={inputText}
         onSecretRoomChange={(text) => setSecretText(text)}
         />
