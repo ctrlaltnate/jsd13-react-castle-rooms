@@ -4,10 +4,10 @@ import { useContext } from "react";
 import { MessageContext } from "../context/MessageContext.jsx";
 
 export default function Outside() {
-  const { inputText, setInputText, secretText } = useContext(MessageContext);
+  const { inputText, setInputText, secretText, isOutsideDark } = useContext(MessageContext);
 
   return (
-    <div className="w-full h-full bg-gray-500 flex items-center justify-center p-8">
+    <div className="relative w-full h-full bg-gray-500 flex items-center justify-center p-8">
       <div className="w-full h-full flex flex-col items-center justify-center">
                 
         
@@ -24,6 +24,12 @@ export default function Outside() {
         </p>
         <Castle />
       </div>
+
+      <div
+        className={`pointer-events-none absolute inset-0 bg-black transition-opacity duration-1000 ${
+          isOutsideDark ? "opacity-75" : "opacity-0"
+        }`}
+      />
     </div>
   );
 }
