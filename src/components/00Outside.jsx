@@ -1,12 +1,10 @@
 import Castle from "./01Castle.jsx";
 import InputBox from "./InputBox.jsx";
-import { useState } from "react";
+import { useContext } from "react";
+import { MessageContext } from "../context/MessageContext.jsx";
 
 export default function Outside() {
-  const [question, setQuestion] = useState("Q");
-  const [answer, setAnswer] = useState("A");
-  const [inputText, setInputText] = useState("");
-  const [secretText, setSecretText] = useState("");
+  const { inputText, setInputText, secretText } = useContext(MessageContext);
 
   return (
     <div className="w-full h-full bg-gray-500 flex items-center justify-center p-8">
@@ -24,10 +22,7 @@ export default function Outside() {
          <p className="text-black font-bold my-4 text-l ">
           Message for Secret Room: {inputText ? inputText : "⏳ Waiting for a message to the Secret Room..."}
         </p>
-        <Castle textFromInput={inputText}
-        onSecretRoomChange={(text) => setSecretText(text)}
-        />
-
+        <Castle />
       </div>
     </div>
   );
